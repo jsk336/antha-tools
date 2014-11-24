@@ -31,7 +31,7 @@ import (
 	"os"
 )
 
-// The FileSystem interface specifies the methods godoc is using
+// The FileSystem interface specifies the methods anthadoc is using
 // to access the file system for which it serves documentation.
 type FileSystem interface {
 	Opener

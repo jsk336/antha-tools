@@ -1,4 +1,4 @@
-// antha-tools/anthadoc/godoc.go: Part of the Antha language
+// antha-tools/anthadoc/anthadoc.go: Part of the Antha language
 // Copyright (C) 2014 The Antha authors. All rights reserved.
 // 
 // This program is free software; you can redistribute it and/or
@@ -21,12 +21,12 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-// Package godoc is a work-in-progress (2013-07-17) package to
-// begin splitting up the godoc binary into multiple pieces.
+// Package anthadoc is a work-in-progress (2013-07-17) package to
+// begin splitting up the anthadoc binary into multiple pieces.
 //
 // This package comment will evolve over time as this package splits
 // into smaller pieces.
-package godoc
+package anthadoc
 
 import (
 	"bytes"
@@ -54,7 +54,7 @@ import (
 // (not just exported ones) will be shown for packages in this directory.
 const builtinPkgPath = "builtin"
 
-// FuncMap defines template functions used in godoc templates.
+// FuncMap defines template functions used in anthadoc templates.
 //
 // Convention: template function names ending in "_html" or "_url" produce
 //             HTML- or URL-escaped strings; all other function results may
@@ -224,10 +224,10 @@ func comment_htmlFunc(comment string) string {
 // use terminals or cards smaller than 80 characters, so 80 it is.
 // We do not try to sniff the environment or the tty to adapt to
 // the situation; instead, by using a constant we make sure that
-// godoc always produces the same output regardless of context,
+// anthadoc always produces the same output regardless of context,
 // a consistency that is lost otherwise.  For example, if we sniffed
 // the environment or tty, then http://golang.org/pkg/math/?m=text
-// would depend on the width of the terminal where godoc started,
+// would depend on the width of the terminal where anthadoc started,
 // which is clearly bogus.  More generally, the Unix tools that behave
 // differently when writing to a tty than when writing to a file have
 // a history of causing confusion (compare `ls` and `ls | cat`), and we

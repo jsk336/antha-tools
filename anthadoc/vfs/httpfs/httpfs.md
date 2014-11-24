@@ -2,7 +2,7 @@
 --
     import "."
 
-Package httpfs implements http.FileSystem using a godoc vfs.FileSystem.
+Package httpfs implements http.FileSystem using a anthadoc vfs.FileSystem.
 
 ## Usage
 

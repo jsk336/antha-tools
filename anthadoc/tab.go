@@ -22,7 +22,7 @@
 
 // TODO(bradfitz,adg): move to util
 
-package godoc
+package anthadoc
 
 import "io"
 

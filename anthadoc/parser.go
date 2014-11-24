@@ -22,9 +22,9 @@
 
 
 // This file contains support functions for parsing .go files
-// accessed via godoc's file system fs.
+// accessed via anthadoc's file system fs.
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"

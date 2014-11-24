@@ -54,7 +54,7 @@
 // - translate the Pos values back into file and line information and
 //   sort the result
 
-package godoc
+package anthadoc
 
 import (
 	"bufio"
@@ -1385,14 +1385,14 @@ func (x *Index) LookupRegexp(r *regexp.Regexp, n int) (found int, result []FileL
 }
 
 // InvalidateIndex should be called whenever any of the file systems
-// under godoc's observation change so that the indexer is kicked on.
+// under anthadoc's observation change so that the indexer is kicked on.
 func (c *Corpus) invalidateIndex() {
 	c.fsModified.Set(nil)
 	c.refreshMetadata()
 }
 
 // indexUpToDate() returns true if the search index is not older
-// than any of the file systems under godoc's observation.
+// than any of the file systems under anthadoc's observation.
 //
 func (c *Corpus) indexUpToDate() bool {
 	_, fsTime := c.fsModified.Get()
@@ -1412,7 +1412,7 @@ func (c *Corpus) feedDirnames(ch chan<- string) {
 }
 
 // fsDirnames() returns a channel sending all directory names
-// of all the file systems under godoc's observation.
+// of all the file systems under anthadoc's observation.
 //
 func (c *Corpus) fsDirnames() <-chan string {
 	ch := make(chan string, 256) // buffered for fewer context switches

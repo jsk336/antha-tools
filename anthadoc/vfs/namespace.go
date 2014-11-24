@@ -48,7 +48,7 @@ const debugNS = false
 // file systems were present at the mount point.
 // For example, if the OS file system has a Go installation in
 // c:\Go and additional Go path trees in  d:\Work1 and d:\Work2, then
-// this name space creates the view we want for the godoc server:
+// this name space creates the view we want for the anthadoc server:
 //
 //	NameSpace{
 //		"/": {

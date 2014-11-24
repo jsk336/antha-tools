@@ -23,7 +23,7 @@
 
 // This file contains the code dealing with package directory trees.
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"

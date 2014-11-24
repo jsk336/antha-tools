@@ -28,8 +28,8 @@ STATIC="
 	dirlist.html
 	error.html
 	example.html
-	godoc.html
-	godocs.js
+	anthadoc.html
+	anthadocs.js
 	images/minus.gif
 	images/plus.gif
 	images/treeview-black-line.gif

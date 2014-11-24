@@ -20,7 +20,7 @@
 // Synthace Ltd. The London Bioscience Innovation Centre
 // 1 Royal College St, London NW1 0NH UK
 
-package godoc
+package anthadoc
 
 import (
 	"fmt"
@@ -44,7 +44,7 @@ const (
 	toolsPath = "github.com/antha-lang/antha-tools/cmd/"
 )
 
-// CommandLine returns godoc results to w.
+// CommandLine returns anthadoc results to w.
 // Note that it may add a /target path to fs.
 func CommandLine(w io.Writer, fs vfs.NameSpace, pres *Presentation, args []string) error {
 	path := args[0]
@@ -109,7 +109,7 @@ func CommandLine(w io.Writer, fs vfs.NameSpace, pres *Presentation, args []strin
 			// is provided (see documentation for paths below).  In that case,
 			// relpath is set to "/target" (in anticipation of accessing packages there),
 			// and is therefore not expected to match a command.
-			fmt.Fprintf(w, "use 'godoc %s%s' for documentation on the %s command \n\n", cmdPrefix, relpath, relpath)
+			fmt.Fprintf(w, "use 'anthadoc %s%s' for documentation on the %s command \n\n", cmdPrefix, relpath, relpath)
 		}
 	}
 

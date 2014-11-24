@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-// Package util contains utility types and functions for godoc.
+// Package util contains utility types and functions for anthadoc.
 package util
 
 import (

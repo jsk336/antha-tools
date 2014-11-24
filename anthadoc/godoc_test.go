@@ -1,4 +1,4 @@
-// antha-tools/anthadoc/godoc_test.go: Part of the Antha language
+// antha-tools/anthadoc/anthadoc_test.go: Part of the Antha language
 // Copyright (C) 2014 The Antha authors. All rights reserved.
 // 
 // This program is free software; you can redistribute it and/or
@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-package godoc
+package anthadoc
 
 import (
 	"testing"

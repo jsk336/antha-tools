@@ -21,14 +21,14 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-package godoc
+package anthadoc
 
 import (
 	"net/http"
 	"runtime"
 )
 
-// Page describes the contents of the top-level godoc webpage.
+// Page describes the contents of the top-level anthadoc webpage.
 type Page struct {
 	Title    string
 	Tabtitle string

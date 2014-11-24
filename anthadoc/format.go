@@ -27,7 +27,7 @@
 // built on top of FormatSelections, a generic formatter
 // for "selected" text.
 
-package godoc
+package anthadoc
 
 import (
 	"fmt"

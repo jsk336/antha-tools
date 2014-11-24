@@ -48,7 +48,7 @@
 // lines in the input that will not appear in the output but are easy
 // to identify by pattern.
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"

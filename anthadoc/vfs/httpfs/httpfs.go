@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-// Package httpfs implements http.FileSystem using a godoc vfs.FileSystem.
+// Package httpfs implements http.FileSystem using a anthadoc vfs.FileSystem.
 package httpfs
 
 import (

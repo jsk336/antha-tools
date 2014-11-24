@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"
@@ -84,7 +84,7 @@ func (c *Corpus) Lookup(query string) SearchResult {
 	// is the result accurate?
 	if c.IndexEnabled {
 		if ts := c.FSModifiedTime(); timestamp.Before(ts) {
-			// The index is older than the latest file system change under godoc's observation.
+			// The index is older than the latest file system change under anthadoc's observation.
 			result.Alert = "Indexing in progress: result may be inaccurate"
 		}
 	} else {
@@ -95,7 +95,7 @@ func (c *Corpus) Lookup(query string) SearchResult {
 }
 
 // SearchResultDoc optionally specifies a function returning an HTML body
-// displaying search results matching godoc documentation.
+// displaying search results matching anthadoc documentation.
 func (p *Presentation) SearchResultDoc(result SearchResult) []byte {
 	return applyTemplate(p.SearchDocHTML, "searchDocHTML", result)
 }

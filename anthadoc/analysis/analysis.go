@@ -29,7 +29,7 @@
 // and at all times may be accessed by a serving thread, even as it is
 // progressively populated as analysis facts are derived.
 //
-// The Result is a mapping from each godoc file URL
+// The Result is a mapping from each anthadoc file URL
 // (e.g. /src/pkg/fmt/print.go) to information about that file.  The
 // information is a list of HTML markup links and a JSON array of
 // structured data values.  Some of the links call client-side
@@ -89,12 +89,12 @@ import (
 type Link interface {
 	Start() int
 	End() int
-	Write(w io.Writer, _ int, start bool) // the godoc.LinkWriter signature
+	Write(w io.Writer, _ int, start bool) // the anthadoc.LinkWriter signature
 }
 
 // An <a> element.
 type aLink struct {
-	start, end int    // =godoc.Segment
+	start, end int    // =anthadoc.Segment
 	title      string // hover text
 	onclick    string // JS code (NB: trusted)
 	href       string // URL     (NB: trusted)
@@ -227,11 +227,11 @@ func (pi *pkgInfo) get() (callGraph []*PCGNodeJSON, callGraphIndex map[string]in
 // and JavaScript data referenced by the links.
 type Result struct {
 	mu        sync.Mutex           // guards maps (but not their contents)
-	fileInfos map[string]*fileInfo // keys are godoc file URLs
+	fileInfos map[string]*fileInfo // keys are anthadoc file URLs
 	pkgInfos  map[string]*pkgInfo  // keys are import paths
 }
 
-// fileInfo returns the fileInfo for the specified godoc file URL,
+// fileInfo returns the fileInfo for the specified anthadoc file URL,
 // constructing it as needed.  Thread-safe.
 func (res *Result) fileInfo(url string) *fileInfo {
 	res.mu.Lock()
@@ -248,7 +248,7 @@ func (res *Result) fileInfo(url string) *fileInfo {
 }
 
 // FileInfo returns new slices containing opaque JSON values and the
-// HTML link markup for the specified godoc file URL.  Thread-safe.
+// HTML link markup for the specified anthadoc file URL.  Thread-safe.
 // Callers must not mutate the elements.
 // It returns "zero" if no data is available.
 //
@@ -289,7 +289,7 @@ type analysis struct {
 	ops       []chanOp       // all channel ops in program
 	allNamed  []*types.Named // all named types in the program
 	ptaConfig pointer.Config
-	path2url  map[string]string // maps openable path to godoc file URL (/src/pkg/fmt/print.go)
+	path2url  map[string]string // maps openable path to anthadoc file URL (/src/pkg/fmt/print.go)
 	pcgs      map[*ssa.Package]*packageCallGraph
 }
 
@@ -348,7 +348,7 @@ func Run(pta bool, result *Result) {
 	}
 
 	// Uncomment to make startup quicker during debugging.
-	//args = []string{"github.com/antha-lang/antha-tools/cmd/godoc"}
+	//args = []string{"github.com/antha-lang/antha-tools/cmd/anthadoc"}
 	//args = []string{"fmt"}
 
 	if _, err := conf.FromArgs(args, true); err != nil {
@@ -396,7 +396,7 @@ func Run(pta bool, result *Result) {
 		pcgs:   make(map[*ssa.Package]*packageCallGraph),
 	}
 
-	// Build a mapping from openable filenames to godoc file URLs,
+	// Build a mapping from openable filenames to anthadoc file URLs,
 	// i.e. "/src/pkg/" plus path relative to GOROOT/src/pkg or GOPATH[i]/src.
 	a.path2url = make(map[string]string)
 	for _, info := range iprog.AllPackages {

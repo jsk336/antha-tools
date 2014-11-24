@@ -248,7 +248,7 @@ $(document).ready(function() {
   setupCallgraphs();
   toggleHash();
 
-  // godoc.html defines window.initFuncs in the <head> tag, and root.html and
+  // anthadoc.html defines window.initFuncs in the <head> tag, and root.html and
   // codewalk.js push their on-page-ready functions to the list.
   // We execute those functions here, to avoid loading jQuery until the page
   // content is loaded.

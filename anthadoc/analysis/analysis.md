@@ -10,7 +10,7 @@ pointer analysis. The Result object is thread-safe and at all times may be
 accessed by a serving thread, even as it is progressively populated as analysis
 facts are derived.
 
-The Result is a mapping from each godoc file URL (e.g. /src/pkg/fmt/print.go) to
+The Result is a mapping from each anthadoc file URL (e.g. /src/pkg/fmt/print.go) to
 information about that file. The information is a list of HTML markup links and
 a JSON array of structured data values. Some of the links call client-side
 JavaScript functions that index this array.
@@ -55,7 +55,7 @@ analysis information if enabled by the pta flag.
 type Link interface {
 	Start() int
 	End() int
-	Write(w io.Writer, _ int, start bool) // the godoc.LinkWriter signature
+	Write(w io.Writer, _ int, start bool) // the anthadoc.LinkWriter signature
 }
 ```
 
@@ -91,7 +91,7 @@ filenames to a set of HTML links and JavaScript data referenced by the links.
 func (res *Result) FileInfo(url string) ([]interface{}, []Link)
 ```
 FileInfo returns new slices containing opaque JSON values and the HTML link
-markup for the specified godoc file URL. Thread-safe. Callers must not mutate
+markup for the specified anthadoc file URL. Thread-safe. Callers must not mutate
 the elements. It returns "zero" if no data is available.
 
 #### func (*Result) PackageInfo

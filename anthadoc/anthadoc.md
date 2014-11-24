@@ -1,12 +1,12 @@
-# godoc
+# anthadoc
 --
     import "."
 
 Copyright 2013 The Go Authors. All rights reserved. Use of this source code is
 governed by a BSD-style license that can be found in the LICENSE file.
 
-Package godoc is a work-in-progress (2013-07-17) package to begin splitting up
-the godoc binary into multiple pieces.
+Package anthadoc is a work-in-progress (2013-07-17) package to begin splitting up
+the anthadoc binary into multiple pieces.
 
 This package comment will evolve over time as this package splits into smaller
 pieces.
@@ -22,7 +22,7 @@ var ErrFileIndexVersion = errors.New("file index version out of date")
 ```go
 func CommandLine(w io.Writer, fs vfs.NameSpace, pres *Presentation, args []string) error
 ```
-CommandLine returns godoc results to w. Note that it may add a /target path to
+CommandLine returns anthadoc results to w. Note that it may add a /target path to
 fs.
 
 #### func  FormatSelections
@@ -113,7 +113,7 @@ type Corpus struct {
 
 	// IndexDocs enables indexing of Go documentation.
 	// This will produce search results for exported types, functions,
-	// methods, variables, and constants, and will link to the godoc
+	// methods, variables, and constants, and will link to the anthadoc
 	// documentation for those identifiers.
 	IndexDocs bool
 
@@ -534,7 +534,7 @@ type Page struct {
 }
 ```
 
-Page describes the contents of the top-level godoc webpage.
+Page describes the contents of the top-level anthadoc webpage.
 
 #### type PageInfo
 
@@ -730,7 +730,7 @@ func (p *Presentation) FileServer() http.Handler
 ```go
 func (p *Presentation) FuncMap() template.FuncMap
 ```
-FuncMap defines template functions used in godoc templates.
+FuncMap defines template functions used in anthadoc templates.
 
 Convention: template function names ending in "_html" or "_url" produce
 
@@ -799,7 +799,7 @@ displaying search results matching source code.
 func (p *Presentation) SearchResultDoc(result SearchResult) []byte
 ```
 SearchResultDoc optionally specifies a function returning an HTML body
-displaying search results matching godoc documentation.
+displaying search results matching anthadoc documentation.
 
 #### func (*Presentation) SearchResultTxt
 

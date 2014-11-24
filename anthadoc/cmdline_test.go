@@ -20,7 +20,7 @@
 // Synthace Ltd. The London Bioscience Innovation Centre
 // 1 Royal College St, London NW1 0NH UK
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"
@@ -283,7 +283,7 @@ package main
 		{
 			desc: "both command and package",
 			args: []string{"vet"},
-			exp:  "use 'godoc cmd/vet' for documentation on the vet command \n\nPACKAGE Package vet\n",
+			exp:  "use 'anthadoc cmd/vet' for documentation on the vet command \n\nPACKAGE Package vet\n",
 		},
 		{
 			desc: "root directory",

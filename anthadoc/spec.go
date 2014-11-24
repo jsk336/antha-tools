@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-package godoc
+package anthadoc
 
 // This file contains the mechanism to "linkify" html source
 // text containing EBNF sections (as found in go_spec.html).

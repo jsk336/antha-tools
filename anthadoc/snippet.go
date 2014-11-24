@@ -26,7 +26,7 @@
 //
 // Note: At the moment, this only creates HTML snippets.
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"

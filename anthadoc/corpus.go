@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-package godoc
+package anthadoc
 
 import (
 	"errors"
@@ -67,7 +67,7 @@ type Corpus struct {
 
 	// IndexDocs enables indexing of Go documentation.
 	// This will produce search results for exported types, functions,
-	// methods, variables, and constants, and will link to the godoc
+	// methods, variables, and constants, and will link to the anthadoc
 	// documentation for those identifiers.
 	IndexDocs bool
 
@@ -105,7 +105,7 @@ type Corpus struct {
 	// If nil, all directories are indexed if indexing is enabled.
 	IndexDirectory func(dir string) bool
 
-	testDir string // TODO(bradfitz,adg): migrate old godoc flag? looks unused.
+	testDir string // TODO(bradfitz,adg): migrate old anthadoc flag? looks unused.
 
 	// Send a value on this channel to trigger a metadata refresh.
 	// It is buffered so that if a signal is not lost if sent
@@ -168,7 +168,7 @@ func (c *Corpus) Init() error {
 func (c *Corpus) initFSTree() error {
 	dir := c.newDirectory(pathpkg.Join("/", c.testDir), -1)
 	if dir == nil {
-		return errors.New("godoc: corpus fstree is nil")
+		return errors.New("anthadoc: corpus fstree is nil")
 	}
 	c.fsTree.Set(dir)
 	c.invalidateIndex()

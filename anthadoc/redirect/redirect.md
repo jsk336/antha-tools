@@ -3,7 +3,7 @@
     import "."
 
 Package redirect provides hooks to register HTTP handlers that redirect old
-godoc paths to their new equivalents and assist in accessing the issue tracker,
+anthadoc paths to their new equivalents and assist in accessing the issue tracker,
 wiki, code review system, etc.
 
 ## Usage
@@ -25,6 +25,6 @@ func PrefixHandler(prefix, baseURL string) http.Handler
 ```go
 func Register(mux *http.ServeMux)
 ```
-Register registers HTTP handlers that redirect old godoc paths to their new
+Register registers HTTP handlers that redirect old anthadoc paths to their new
 equivalents and assist in accessing the issue tracker, wiki, code review system,
 etc. If mux is nil it uses http.DefaultServeMux.

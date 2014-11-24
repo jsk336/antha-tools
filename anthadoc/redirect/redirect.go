@@ -22,7 +22,7 @@
 
 
 // Package redirect provides hooks to register HTTP handlers that redirect old
-// godoc paths to their new equivalents and assist in accessing the issue
+// anthadoc paths to their new equivalents and assist in accessing the issue
 // tracker, wiki, code review system, etc.
 package redirect
 
@@ -31,7 +31,7 @@ import (
 	"regexp"
 )
 
-// Register registers HTTP handlers that redirect old godoc paths to their new
+// Register registers HTTP handlers that redirect old anthadoc paths to their new
 // equivalents and assist in accessing the issue tracker, wiki, code review
 // system, etc. If mux is nil it uses http.DefaultServeMux.
 func Register(mux *http.ServeMux) {
@@ -103,8 +103,8 @@ var redirects = map[string]string{
 	"/build":      "http://build.golang.org",
 	"/change":     "https://code.google.com/p/go/source/list",
 	"/cl":         "https://gocodereview.appspot.com/",
-	"/cmd/godoc/": "http://godoc.org/code.google.com/p/go.tools/cmd/godoc/",
-	"/cmd/vet/":   "http://godoc.org/code.google.com/p/go.tools/cmd/vet/",
+	"/cmd/anthadoc/": "http://anthadoc.org/code.google.com/p/go.tools/cmd/anthadoc/",
+	"/cmd/vet/":   "http://anthadoc.org/code.google.com/p/go.tools/cmd/vet/",
 	"/issue":      "https://code.google.com/p/go/issues",
 	"/issue/new":  "https://code.google.com/p/go/issues/entry",
 	"/issues":     "https://code.google.com/p/go/issues",
@@ -129,7 +129,7 @@ var redirects = map[string]string{
 	"/doc/articles/defer_panic_recover.html":         "/blog/defer-panic-and-recover",
 	"/doc/articles/error_handling.html":              "/blog/error-handling-and-go",
 	"/doc/articles/gobs_of_data.html":                "/blog/gobs-of-data",
-	"/doc/articles/godoc_documenting_go_code.html":   "/blog/godoc-documenting-go-code",
+	"/doc/articles/anthadoc_documenting_go_code.html":   "/blog/anthadoc-documenting-go-code",
 	"/doc/articles/gos_declaration_syntax.html":      "/blog/gos-declaration-syntax",
 	"/doc/articles/image_draw.html":                  "/blog/go-imagedraw-package",
 	"/doc/articles/image_package.html":               "/blog/go-image-package",

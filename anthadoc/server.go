@@ -21,7 +21,7 @@
 // 1 Royal College St, London NW1 0NH UK
 
 
-package godoc
+package anthadoc
 
 import (
 	"bytes"
@@ -51,7 +51,7 @@ import (
 	"github.com/antha-lang/antha-tools/anthadoc/vfs"
 )
 
-// handlerServer is a migration from an old godoc http Handler type.
+// handlerServer is a migration from an old anthadoc http Handler type.
 // This should probably merge into something else.
 type handlerServer struct {
 	p       *Presentation
@@ -164,7 +164,7 @@ func (h *handlerServer) GetPageInfo(abspath, relpath string, mode PageInfoMode) 
 
 			// collect any notes that we want to show
 			if info.PDoc.Notes != nil {
-				// could regexp.Compile only once per godoc, but probably not worth it
+				// could regexp.Compile only once per anthadoc, but probably not worth it
 				if rx := h.p.NotesRx; rx != nil {
 					for m, n := range info.PDoc.Notes {
 						if rx.MatchString(m) {
@@ -531,7 +531,7 @@ func (p *Presentation) serveTextFile(w http.ResponseWriter, r *http.Request, abs
 		// disabled, pending, completed or failed.
 		// For now, display help link only if 'completed'.
 		if links != nil {
-			buf.WriteString("<a href='/lib/godoc/analysis/help.html'>Static analysis features</a><br/>")
+			buf.WriteString("<a href='/lib/anthadoc/analysis/help.html'>Static analysis features</a><br/>")
 		}
 
 		buf.WriteString("<pre>")

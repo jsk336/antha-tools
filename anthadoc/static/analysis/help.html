@@ -1,5 +1,5 @@
 <!--{
-        "Title": "Static analysis features of godoc"
+        "Title": "Static analysis features of anthadoc"
 }-->
 
 <style>
@@ -13,7 +13,7 @@
      little before seeing pixels. -->
 
 <p>
-  When invoked with the <code>-analysis</code> flag, godoc performs
+  When invoked with the <code>-analysis</code> flag, anthadoc performs
   static analysis on the Go packages it indexes and displays the
   results in the source and package views.  This document provides a
   brief tour of these features.
@@ -26,14 +26,14 @@
   style='font-size:120%; color:darkred; background-color:
   yellow'>⚠</span>.
 
-  Nonetheless, godoc's static analysis may be immediately useful today
+  Nonetheless, anthadoc's static analysis may be immediately useful today
   for small-to-medium sized Go corpora, and it contains several
   advances over the state of the art in code browsing.
 </p>
 
 <h2>Type analysis features</h2>
 <p>
-  <code>godoc -analysis=type</code> performs static checking similar
+  <code>anthadoc -analysis=type</code> performs static checking similar
   to that done by a compiler: it detects ill-formed programs, resolves
   each identifier to the entity it denotes, computes the type of each
   expression and the method set of each type, and determines which
@@ -101,7 +101,7 @@
 
 <h2>Pointer analysis features</h2>
 <p>
-  <code>godoc -analysis=pointer</code> performs a precise
+  <code>anthadoc -analysis=pointer</code> performs a precise
   whole-program <b>pointer analysis</b>.  In other words, it
   approximates the set of memory locations to which each
   reference&mdash;not just vars of kind <code>*T</code>, but also
@@ -266,5 +266,5 @@
   If the files change underneath the running server, the displayed
   markup is misaligned.</br>
 
-  <span class='err'>⚠</span> Additional issues are listed at <a href='https://code.google.com/p/antha/source/browse/godoc/analysis/README?repo=tools'>go.tools/godoc/analysis/README</a>.</br>
+  <span class='err'>⚠</span> Additional issues are listed at <a href='https://code.google.com/p/antha/source/browse/anthadoc/analysis/README?repo=tools'>go.tools/anthadoc/analysis/README</a>.</br>
 </p>

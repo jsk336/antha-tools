@@ -2,7 +2,7 @@
 --
     import "."
 
-Package util contains utility types and functions for godoc.
+Package util contains utility types and functions for anthadoc.
 
 ## Usage
 

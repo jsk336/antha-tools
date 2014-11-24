@@ -23,11 +23,11 @@
 
 // This file implements LinkifyText which introduces
 // links for identifiers pointing to their declarations.
-// The approach does not cover all cases because godoc
+// The approach does not cover all cases because anthadoc
 // doesn't have complete type information, but it's
 // reasonably good for browsing.
 
-package godoc
+package anthadoc
 
 import (
 	"fmt"
