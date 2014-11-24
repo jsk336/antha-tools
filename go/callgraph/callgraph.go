@@ -1,0 +1,127 @@
+// antha-tools/go/callgraph/callgraph.go: Part of the Antha language
+// Copyright (C) 2014 The Antha authors. All rights reserved.
+// 
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+// 
+// For more information relating to the software or licensing issues please
+// contact license@antha-lang.org or write to the Antha team c/o 
+// Synthace Ltd. The London Bioscience Innovation Centre
+// 1 Royal College St, London NW1 0NH UK
+
+
+/*
+
+Package callgraph defines the call graph and various algorithms
+and utilities to operate on it.
+
+A call graph is a labelled directed graph whose nodes represent
+functions and whose edge labels represent syntactic function call
+sites.  The presence of a labelled edge (caller, site, callee)
+indicates that caller may call callee at the specified call site.
+
+A call graph is a multigraph: it may contain multiple edges (caller,
+*, callee) connecting the same pair of nodes, so long as the edges
+differ by label; this occurs when one function calls another function
+from multiple call sites.  Also, it may contain multiple edges
+(caller, site, *) that differ only by callee; this indicates a
+polymorphic call.
+
+A SOUND call graph is one that overapproximates the dynamic calling
+behaviors of the program in all possible executions.  One call graph
+is more PRECISE than another if it is a smaller overapproximation of
+the dynamic behavior.
+
+All call graphs have a synthetic root node which is responsible for
+calling main() and init().
+
+Calls to built-in functions (e.g. panic, println) are not represented
+in the call graph; they are treated like built-in operators of the
+language.
+
+*/
+package callgraph
+
+// TODO(adonovan): add a function to eliminate wrappers from the
+// callgraph, preserving topology.
+// More generally, we could eliminate "uninteresting" nodes such as
+// nodes from packages we don't care about.
+
+import (
+	"fmt"
+
+	"github.com/antha-lang/antha-tools/antha/ssa"
+)
+
+// A Graph represents a call graph.
+//
+// A graph may contain nodes that are not reachable from the root.
+// If the call graph is sound, such nodes indicate unreachable
+// functions.
+//
+type Graph struct {
+	Root  *Node                   // the distinguished root node
+	Nodes map[*ssa.Function]*Node // all nodes by function
+}
+
+// New returns a new Graph with the specified root node.
+func New(root *ssa.Function) *Graph {
+	g := &Graph{Nodes: make(map[*ssa.Function]*Node)}
+	g.Root = g.CreateNode(root)
+	return g
+}
+
+// CreateNode returns the Node for fn, creating it if not present.
+func (g *Graph) CreateNode(fn *ssa.Function) *Node {
+	n, ok := g.Nodes[fn]
+	if !ok {
+		n = &Node{Func: fn, ID: len(g.Nodes)}
+		g.Nodes[fn] = n
+	}
+	return n
+}
+
+// A Node represents a node in a call graph.
+type Node struct {
+	Func *ssa.Function // the function this node represents
+	ID   int           // 0-based sequence number
+	In   []*Edge       // unordered set of incoming call edges (n.In[*].Callee == n)
+	Out  []*Edge       // unordered set of outgoing call edges (n.Out[*].Caller == n)
+}
+
+func (n *Node) String() string {
+	return fmt.Sprintf("n%d:%s", n.ID, n.Func)
+}
+
+// A Edge represents an edge in the call graph.
+//
+// Site is nil for edges originating in synthetic or intrinsic
+// functions, e.g. reflect.Call or the root of the call graph.
+type Edge struct {
+	Caller *Node
+	Site   ssa.CallInstruction
+	Callee *Node
+}
+
+func (e Edge) String() string {
+	return fmt.Sprintf("%s --> %s", e.Caller, e.Callee)
+}
+
+// AddEdge adds the edge (caller, site, callee) to the call graph.
+// Elimination of duplicate edges is the caller's responsibility.
+func AddEdge(caller *Node, site ssa.CallInstruction, callee *Node) {
+	e := &Edge{caller, site, callee}
+	callee.In = append(callee.In, e)
+	caller.Out = append(caller.Out, e)
+}
